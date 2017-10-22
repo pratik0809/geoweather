@@ -1,0 +1,31 @@
+.App {
+  text-align: center;
+  max-height: 100%;
+}
+
+.App-header {
+  z-index: 1;
+  right: 30px;
+  color: white;
+  position: absolute;
+  font-size: 2em;
+  background: black;
+
+  padding: 10px;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+
+/* Disable Google Maps Footer */
+a[href^="http://maps.google.com/maps"]{display:none !important}
+a[href^="https://maps.google.com/maps"]{display:none !important}
+
+.gmnoprint a, .gmnoprint span, .gm-style-cc {
+    display:none;
+}
+.gmnoprint div {
+    background:none !important;
+}
