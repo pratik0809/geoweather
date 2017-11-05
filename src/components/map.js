@@ -8,11 +8,13 @@ const Map =
     withGoogleMap(
       ((props) =>
         <GoogleMap
-          defaultZoom={12}
+          zoom={props.mapZoom}
           clickableIcons={false}
           defaultCenter={{ lat: 41.8781136, lng: -87.62979819999998 }}
           onClick={(e) => props.updateCoords(e.latLng.lat(), e.latLng.lng())}
           options={{ disableDefaultUI: true, styles: mapStyle }}
+          onZoomChanged={props.onZoomChanged}
+          ref={props.onMapMounted}
         >
           <MarkerContainer />
         </GoogleMap>

@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import { toggleInfo } from '../actions'
 import { connect } from 'react-redux'
 import Marker from "../components/Marker"

@@ -1,4 +1,3 @@
-import React from 'react';
 import { toggleInfo } from '../actions'
 import { connect } from 'react-redux'
 import InfoWindowComponent from "../components/InfoWindow"

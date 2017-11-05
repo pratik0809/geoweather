@@ -45,19 +45,3 @@ export const fetchWeather = (baseUrl, lat, lng) => {
 
   };
 }
-
-// console.log(lat, lng)
-// fetch(`http://localhost:3030/fetchWeather?latitude=${lat}&longitude=${lng}`)
-// .then((weatherdeets) => {
-//   return {
-//     type: UPDATE_COORDS,
-//     payload: {
-//       lat,
-//       lng,
-//       weatherdeets
-//     }
-//   }
-// })
-// .catch((error) => {
-//   console.error(error);
-// });

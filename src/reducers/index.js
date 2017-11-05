@@ -4,6 +4,7 @@ const initialState = {
     lng: undefined
   },
   isInfoShown: false,
+  mapZoom: 12,
   weatherStatus: {
     loading: false,
     error: false,
@@ -21,6 +22,21 @@ const initialState = {
 
 export function geoWeather(state = initialState, action) {
   switch(action.type) {
+    case "ZOOM_CHANGED":
+      return {...state,
+        mapZoom: action.zoomScale
+      }
+
+    case "ZOOM_IN":
+      return {...state,
+        mapZoom: state.mapZoom + 1
+      }
+
+    case "ZOOM_OUT":
+      return {...state,
+        mapZoom: state.mapZoom - 1
+      }
+
     case "UPDATE_COORDS":
     //You can also enable the object spread operator proposal to write { ...state, ...newState } instead.
       return Object.assign({}, state, {

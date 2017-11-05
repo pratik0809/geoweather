@@ -7,16 +7,37 @@
   z-index: 1;
   right: 30px;
   color: white;
-  position: absolute;
+  position: fixed;
   font-size: 2em;
   background: black;
-
   padding: 10px;
 }
 
+.App-options {
+  z-index: 1;
+  top: 75px;
+  right: 30px;
+  position: fixed;
+  background: black;
+  padding: 10px;
+  display: inline;
+}
+
+button {
+  z-index: 1;
+  top: 60px;
+  right: 30px;
+  color: white;
+  font-size: 1.2rem;
+  background: black;
+  margin: 2px;
+  display: inline;
+  border: none;
+}
 .App-title {
   font-size: 1.5em;
 }
+
 
 
 /* Disable Google Maps Footer */

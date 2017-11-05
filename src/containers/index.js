@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Map from '../components/map'
 import { toggleInfo, updateCoords } from '../actions'
+import { changeZoom } from '../actions/zoom'
 import { connect } from 'react-redux'
 import {fetchWeather} from '../actions/fetchWeather'
 
-const baseUrl = "http://localhost:3030/fetchWeather"
+const baseUrl = "https://geoweather-server.herokuapp.com/fetchWeather"
 
 const mapStateToProps = state => {
   return {
@@ -12,15 +13,26 @@ const mapStateToProps = state => {
     loadingElement: <div style={{ height: `100%`}} />,
     containerElement: <div style={{ height: `100vh` }} />,
     mapElement: <div style={{ height: `100%` }} />,
+    mapZoom: state.mapZoom
   }
 }
 
 const mapDispatchToProps = dispatch => {
+  const refs = {
+      map: undefined,
+  }
+
   return {
     updateCoords: (lat, lng) => {
       dispatch(updateCoords(lat, lng))
       dispatch(toggleInfo(true))
       dispatch(fetchWeather(baseUrl, lat, lng))
+    },
+    onMapMounted: (ref) => {
+        refs.map = ref
+    },
+    onZoomChanged: () => {
+      dispatch(changeZoom(refs.map.getZoom()))
     }
   }
 }

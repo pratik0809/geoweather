@@ -17,7 +17,7 @@ class InfoWindowComponent extends Component {
         contents = (
           <div>
              <div id="icon">
-               <img src="" />
+               <img src="" alt=""/>
              </div>
              <div>
                Temperature: { this.props.weatherStatus.success.tempc } °C
