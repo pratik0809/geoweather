@@ -9,7 +9,7 @@ const baseUrl = "https://geoweather-server.herokuapp.com/fetchWeather"
 
 const mapStateToProps = state => {
   return {
-    googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyD_UQmA1pxzACCkeQd1MS8R0WK2TJKmQeM&v=3.exp&libraries=geometry,drawing,places",
+    googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyD_UQmA1pxzACCkeQd1MS8R0WK2TJKmQeM&callback=initMap",
     loadingElement: <div style={{ height: `100%`}} />,
     containerElement: <div style={{ height: `100vh` }} />,
     mapElement: <div style={{ height: `100%` }} />,

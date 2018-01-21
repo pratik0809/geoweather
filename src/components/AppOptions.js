@@ -17,7 +17,7 @@ class AppOptions extends Component {
         geoButton = <button><Loader color="white" size="14px" /></button>
       }
       else {
-        geoButton = <button id="findMe"onClick={getUserLocation}>📍</button>
+        geoButton = <button id="findMe"onClick={getUserLocation}><span role="img" aria-label="Find Me">📍</span></button>
       }
     return (
       <div className="options">

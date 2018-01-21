@@ -8,7 +8,7 @@ class InfoWindowComponent extends Component {
     const hasErrored = weatherStatus.error;
 
     let contents = null;
-    let temp = null;
+    
       if (isLoading) {
         contents =  <p>Loading...</p>
       }
