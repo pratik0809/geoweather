@@ -1,13 +1,19 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import './styles/index.css';
 import App from './App';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import {geoWeather} from './reducers'
+import { geoWeatherApp, initialState } from './reducers'
 
-let store = createStore(geoWeather, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), applyMiddleware(thunk))
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+let store = createStore(
+  geoWeatherApp,
+  initialState,
+  composeEnhancers(applyMiddleware(thunk))
+)
 
 render(
   <Provider store={store}>

@@ -1,10 +1,6 @@
-// Actions
-export const UPDATE_COORDS = 'UPDATE_COORDS'
-export const TOGGLE_INFO = 'TOGGLE_INFO'
-
 const updateCoords = (lat, lng) => {
     return {
-      type: UPDATE_COORDS,
+      type: 'UPDATE_COORDS',
       coordinates: {
         lat,
         lng
@@ -14,10 +10,17 @@ const updateCoords = (lat, lng) => {
 
 const toggleInfo = (bool) => {
   return {
-    type: TOGGLE_INFO,
+    type: 'TOGGLE_INFO',
     bool
   }
 }
 
+const tempPref = (preferredTemp) => {
+  return {
+    type: 'UPDATE_PREFER_TEMP',
+    preferredTemp
+  }
+}
 
-export { updateCoords, toggleInfo }
+
+export { updateCoords, toggleInfo, tempPref }

@@ -18,11 +18,26 @@
   top: 75px;
   right: 30px;
   position: fixed;
-  background: black;
+background: black;
   padding: 10px;
-  display: inline;
+  display: flex;
+  flex-direction: row;
 }
 
+.App-options-footer {
+  z-index: 1;
+  bottom: 75px;
+  right: 30px;
+  position: fixed;
+background: black;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.options {
+  clear: both;
+}
 button {
   z-index: 1;
   top: 60px;
@@ -30,10 +45,20 @@ button {
   color: white;
   font-size: 1.2rem;
   background: black;
-  margin: 2px;
-  display: inline;
+  margin: 0px;
+  display: block;
   border: none;
+  padding: 5px;
+  margin: 2px;
+  text-align: center;
 }
+
+.tmp.preferred {
+  border: 0.5px white solid;
+}
+
+.tmp:focus {outline:0 !important;}
+
 .App-title {
   font-size: 1.5em;
 }

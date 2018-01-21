@@ -5,9 +5,7 @@ import InfoWindowComponent from "../components/InfoWindow"
 const mapStateToProps = state => {
   return {
     weatherStatus: state.weatherStatus,
-    isInfoShown: state.isInfoShown,
-    lat: state.coordinates.lat,
-    lng: state.coordinates.lng
+    isInfoShown: state.isInfoShown
   }
 }
 

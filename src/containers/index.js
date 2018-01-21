@@ -13,7 +13,10 @@ const mapStateToProps = state => {
     loadingElement: <div style={{ height: `100%`}} />,
     containerElement: <div style={{ height: `100vh` }} />,
     mapElement: <div style={{ height: `100%` }} />,
-    mapZoom: state.mapZoom
+    mapZoom: state.mapZoom,
+    lat: state.coordinates.lat,
+    lng: state.coordinates.lng,
+    condition: true
   }
 }
 

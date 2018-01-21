@@ -3,10 +3,12 @@ import { InfoWindow } from "react-google-maps"
 
 class InfoWindowComponent extends Component {
   render() {
-    const isLoading = this.props.weatherStatus.loading;
-    const hasErrored = this.props.weatherStatus.error;
+    const { weatherStatus, isInfoShown, toggleInfo } = this.props
+    const isLoading = weatherStatus.loading;
+    const hasErrored = weatherStatus.error;
 
     let contents = null;
+    let temp = null;
       if (isLoading) {
         contents =  <p>Loading...</p>
       }
@@ -14,15 +16,21 @@ class InfoWindowComponent extends Component {
         contents = <p>Sorry! There was an error loading the weather</p>
       }
       else {
+        const { preferredTemp } = weatherStatus;
+        const { tempf, tempc, area, main } = weatherStatus.success;
         contents = (
           <div>
              <div id="icon">
                <img src="" alt=""/>
              </div>
              <div>
-               Temperature: { this.props.weatherStatus.success.tempc } °C
-               <br />
-               Humidity: { this.props.weatherStatus.success.humidity } %
+               Area: { area }
+             </div>
+             <div>
+               Temperature: { preferredTemp === '°F' ? `${tempf} °F` : `${tempc} °C` }
+             </div>
+             <div>
+               Weather: { main }
              </div>
            </div>
         )
@@ -30,8 +38,8 @@ class InfoWindowComponent extends Component {
 
     return (
       <div>
-        {this.props.isInfoShown &&
-          <InfoWindow onCloseClick={() => this.props.toggleInfo()}>
+        {isInfoShown &&
+          <InfoWindow onCloseClick={() => toggleInfo()}>
             {contents}
           </InfoWindow>
         }

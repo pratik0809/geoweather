@@ -1,86 +1,55 @@
-const initialState = {
+import { combineReducers } from 'redux'
+import zoomChange from './zoom'
+import weatherChange from './weather'
+import geolocate from './geolocation'
+import toggleInfo from './toggleInfo'
+import coordChange from './coordinates'
+
+export const initialState = {
   coordinates: {
     lat: undefined,
     lng: undefined
+  },
+  geolocationStatus: {
+    loading: false,
+    error: false
   },
   isInfoShown: false,
   mapZoom: 12,
   weatherStatus: {
     loading: false,
     error: false,
+    preferredTemp: "°F",
     success: {
       "tempf": 0,
       "tempc": 0,
-      "temp": 0,
-      "pressure": 0,
-      "humidity": 0,
-      "temp_min": 0,
-      "temp_max": 0
+      "area": undefined,
+      "id": undefined,
+      "main": undefined,
+      "description": undefined,
+      "icon": undefined
     }
   }
 }
 
-export function geoWeather(state = initialState, action) {
-  switch(action.type) {
-    case "ZOOM_CHANGED":
-      return {...state,
-        mapZoom: action.zoomScale
-      }
+export const geoWeatherApp = combineReducers({
+  mapZoom: zoomChange,
+  weatherStatus: weatherChange,
+  geolocationStatus: geolocate,
+  isInfoShown: toggleInfo,
+  coordinates: coordChange,
+})
 
-    case "ZOOM_IN":
-      return {...state,
-        mapZoom: state.mapZoom + 1
-      }
 
-    case "ZOOM_OUT":
-      return {...state,
-        mapZoom: state.mapZoom - 1
-      }
 
-    case "UPDATE_COORDS":
-    //You can also enable the object spread operator proposal to write { ...state, ...newState } instead.
-      return Object.assign({}, state, {
-        coordinates: {
-          lat: action.coordinates.lat,
-          lng: action.coordinates.lng
-        }
-      })
+/* Instead of combineReducers:
 
-    case "TOGGLE_INFO":
-      if(action.bool) {
-        return Object.assign({}, state, {
-          isInfoShown: action.bool
-        })
-      }
-      return Object.assign({}, state, {
-        isInfoShown: !state.isInfoShown
-      })
-
-    case "LOADING_WEATHER":
-      return {...state,
-        weatherStatus: {
-          ...state.weatherStatus,
-          loading: action.isLoading
-        }
-      }
-
-    case "ERROR_WEATHER":
-      return Object.assign({}, state, {
-        weatherStatus: {
-          ...state.weatherStatus,
-          error: action.hasErrored
-        }
-    })
-
-    case "SUCCESS_WEATHER":
-      return Object.assign({}, state, {
-        weatherStatus: {
-          ...state.weatherStatus,
-          success: action.weatherdeets
-        }
-    })
-
-    default:
-      return state
+function geoWeatherApp(state = initialState, action) {
+  return {
+    zoomChange: zoomChange(state.mapZoom, action),
+    weatherChange: weatherChange(state.weatherStatus, action),
+    toggleInfo: toggleInfo(state.isInfoShown, action),
+    updateCoords: updateCoords(state.coordinates, action)
   }
 }
+*/

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './styles/App.css';
 import MapContainer from './containers'
 import Options from './containers/Options'
+
 class App extends Component {
   render() {
     return (

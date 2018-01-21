@@ -1,29 +1,3 @@
-// Actions
-export const ERROR_WEATHER = 'ERROR_WEATHER'
-export const LOADING_WEATHER = 'LOADING_WEATHER'
-export const SUCCESS_WEATHER = 'SUCCESS_WEATHER'
-
-const weatherHasErrored = (bool) => {
-  return {
-    type: ERROR_WEATHER,
-    hasErrored: bool
-  };
-}
-
-const weatherIsLoading = (bool) => {
-  return {
-    type: LOADING_WEATHER,
-    isLoading: bool
-  };
-}
-
-const weatherSuccess = (weatherdeets) => {
-  return {
-    type: SUCCESS_WEATHER,
-    weatherdeets
-  };
-}
-
 export const fetchWeather = (baseUrl, lat, lng) => {
   return (dispatch) => {
     dispatch(weatherIsLoading(true));
@@ -43,5 +17,26 @@ export const fetchWeather = (baseUrl, lat, lng) => {
         dispatch(weatherHasErrored(true))
       })
 
+  };
+}
+
+const weatherHasErrored = (bool) => {
+  return {
+    type: 'ERROR_WEATHER',
+    hasErrored: bool
+  };
+}
+
+const weatherIsLoading = (bool) => {
+  return {
+    type: 'LOADING_WEATHER',
+    isLoading: bool
+  };
+}
+
+const weatherSuccess = (weatherdeets) => {
+  return {
+    type: 'SUCCESS_WEATHER',
+    weatherdeets
   };
 }
